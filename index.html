@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MR KING CYBER</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050908;color:#00ff88;font-family:Arial,sans-serif}
+header{text-align:center;padding:25px;background:#09150f;border-bottom:1px solid #00ff88}
+header h1{font-size:28px;text-shadow:0 0 15px #00ff88}
+header p{color:#9bb9a6;font-size:12px;letter-spacing:2px}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;background:#101b16;padding:12px;position:sticky;top:0;z-index:5}
+nav button{background:#101b16;color:#00ff88;border:1px solid #176b47;padding:10px;border-radius:5px}
+nav button.active{background:#00ff88;color:#00150b}
+main{max-width:900px;margin:auto;padding:20px 15px;min-height:65vh}
+section{display:none}
+section.active{display:block}
+.panel{background:#0b1711;border:1px solid #176b47;border-radius:12px;padding:22px;margin:16px 0}
+h2{color:white}
+h3{color:#00ff88}
+p,li{color:#b4c9bc;line-height:1.7}
+.tag{color:#00ff88}
+#clock{font-size:27px;color:#00ff88;font-weight:bold}
+.terminal{background:#020503;border:1px solid #176b47;border-radius:8px;padding:16px;color:#00ff88;font-family:monospace;line-height:1.8;min-height:110px}
+.article{border-left:3px solid #00ff88;padding:10px 15px;margin:15px 0;background:#101b16}
+footer{text-align:center;padding:25px;color:#668879;border-top:1px solid #173b29}
+input,textarea{width:100%;padding:12px;margin:8px 0;background:#07110b;border:1px solid #176b47;color:#00ff88;border-radius:5px}
+</style>
+</head>
+<body>
+<header>
+<h1>MR KING CYBER</h1>
+<p>TECHNOLOGY • SECURITY • DIGITAL</p>
+<div id="clock">00:00:00</div>
+<div id="date"></div>
+</header>
+<nav>
+<button class="active" onclick="showPage('home',this)">HOME</button>
+<button onclick="showPage('about',this)">ABOUT</button>
+<button onclick="showPage('security',this)">SECURITY</button>
+<button onclick="showPage('tools',this)">TOOLS</button>
+<button onclick="showPage('articles',this)">ARTICLES</button>
+<button onclick="showPage('contact',this)">CONTACT</button>
+</nav>
+<main>
+
+<section id="home" class="active">
+<div class="panel">
+<p class="tag">[ SYSTEM ONLINE ]</p>
+<h2>WELCOME TO MR KING CYBER</h2>
+<p>Explore the world of technology and digital security.</p>
+<div class="terminal">
+<div id="terminalText"></div>
+</div>
+</div>
+
+<div class="panel">
+<h3>LIVE DASHBOARD V8</h3>
+<div class="article">
+<p>Website status: <span class="tag" id="siteStatus">CHECKING...</span></p>
+<p>Platform: MR KING CYBER</p>
+<p>Mode: Digital Technology</p>
+<p>Local time: <span id="dashTime">--:--:--</span></p>
+<p>Session duration: <span id="uptime">00:00:00</span></p>
+</div>
+<div class="article">
+<h3>WEBSITE STATISTICS</h3>
+<p>Navigation menus: <span class="tag">6</span></p>
+<p>Learning articles: <span class="tag">5</span></p>
+<p>Interactive tools: <span class="tag">2</span></p>
+<p>Contact channel: <span class="tag">WHATSAPP</span></p>
+</div>
+<div class="article">
+<h3>SYSTEM ACTIVITY</h3>
+<p id="activityStatus">Dashboard initialized.</p>
+<p id="activityTime">Waiting for activity...</p>
+</div>
+</div>
+</section>
+
+
+<section id="about">
+<div class="panel">
+<h2>ABOUT MR KING CYBER</h2>
+<p>MR KING CYBER adalah ruang informasi dan eksplorasi teknologi digital.</p>
+<p>Fokus pada Linux, jaringan komputer, pemrograman, dan keamanan siber yang bertanggung jawab.</p>
+<h3>OUR MISSION</h3>
+<p>Learn • Create • Innovate • Protect</p>
+</div>
+<div class="panel">
+<h3>ADMINISTRATOR</h3>
+<p>Nama: MR KING CYBER</p>
+<p>Peran: Administrator Website</p>
+<p>Profil pengelola dapat dilengkapi sesuai identitas yang ingin ditampilkan.</p>
+</div>
+</section>
+
+<section id="security">
+<div class="panel">
+<h2>CYBER SECURITY</h2>
+<p>Pengetahuan untuk menjaga keamanan perangkat dan sistem digital.</p>
+<ul>
+<li>Network Security</li>
+<li>Web Security</li>
+<li>Ethical Hacking</li>
+<li>Digital Privacy</li>
+<li>Linux Security</li>
+</ul>
+</div>
+</section>
+
+
+<section id="tools">
+  <div class="panel">
+    <h2>CYBER TOOLS</h2>
+    <p>Alat pembelajaran keamanan digital. Semua pemeriksaan dilakukan langsung di browser.</p>
+
+    <div class="article">
+      <h3>1. PASSWORD STRENGTH CHECKER</h3>
+      <input id="mkPassword" type="password" placeholder="Masukkan password untuk diperiksa" oninput="checkMKPassword()" style="width:100%;padding:12px;background:#101b16;color:#00ff88;border:1px solid #176b4b;border-radius:6px">
+      <p id="mkPasswordResult">Hasil pemeriksaan akan muncul di sini.</p>
+      <small>Password tidak dikirim ke server atau disimpan oleh alat ini.</small>
+    </div>
+
+    <div class="article">
+      <h3>2. URL FORMAT CHECKER</h3>
+      <input id="mkUrl" type="text" placeholder="Contoh: https://example.com" style="width:100%;padding:12px;background:#101b16;color:#00ff88;border:1px solid #176b4b;border-radius:6px">
+      <button onclick="checkMKUrl()" style="margin-top:10px;padding:10px 16px;background:#00ff88;color:#00150b;border:0;border-radius:5px">CHECK URL</button>
+      <p id="mkUrlResult">Masukkan alamat website untuk memeriksa formatnya.</p>
+      <small>Alat ini memeriksa format URL, bukan menjamin website aman.</small>
+    </div>
+  </div>
+</section>
+<script>
+function checkMKPassword(){
+  const p=document.getElementById('mkPassword').value;
+  const r=document.getElementById('mkPasswordResult');
+  if(!p){r.textContent='Hasil pemeriksaan akan muncul di sini.';return;}
+  let score=0;
+  if(p.length>=8)score++;
+  if(p.length>=12)score++;
+  if(/[a-z]/.test(p)&&/[A-Z]/.test(p))score++;
+  if(/[0-9]/.test(p))score++;
+  if(/[^A-Za-z0-9]/.test(p))score++;
+  const labels=['Sangat lemah','Lemah','Cukup','Baik','Kuat','Sangat kuat'];
+  r.textContent='Kekuatan perkiraan: '+labels[score]+' ('+score+'/5)';
+}
+function checkMKUrl(){
+  const v=document.getElementById('mkUrl').value.trim();
+  const r=document.getElementById('mkUrlResult');
+  try{
+    const u=new URL(v);
+    if(u.protocol!=='http:'&&u.protocol!=='https:')throw new Error();
+    r.textContent='Format URL valid. Domain: '+u.hostname;
+  }catch(e){
+    r.textContent='Format URL tidak valid. Gunakan alamat yang diawali http:// atau https://';
+  }
+}
+</script>
+
+
+
+<section id="articles">
+  <div class="panel">
+    <h2>CYBER KNOWLEDGE CENTER</h2>
+    <p>Pusat pembelajaran teknologi, Linux, jaringan, dan keamanan digital.</p>
+
+    <div class="article">
+      <h3>01. MENGENAL LINUX</h3>
+      <p>Linux adalah sistem operasi yang banyak digunakan pada server, komputer, dan perangkat jaringan.</p>
+      <p>Pelajari perintah dasar seperti pwd, ls, cd, mkdir, cp, dan cat untuk memahami cara kerja terminal.</p>
+    </div>
+
+    <div class="article">
+      <h3>02. BELAJAR TERMUX</h3>
+      <p>Termux menyediakan lingkungan terminal Linux di Android tanpa harus melakukan root.</p>
+      <p>Gunakan Termux untuk belajar Python, mengelola file latihan, memahami jaringan, dan menjalankan server lokal.</p>
+    </div>
+
+    <div class="article">
+      <h3>03. DASAR CYBER SECURITY</h3>
+      <p>Cyber security adalah upaya melindungi perangkat, akun, jaringan, dan data dari akses yang tidak sah.</p>
+      <p>Pelajari autentikasi, pembaruan perangkat lunak, pencadangan data, dan pengelolaan izin akses.</p>
+    </div>
+
+    <div class="article">
+      <h3>04. KEAMANAN WEBSITE</h3>
+      <p>Website yang aman menggunakan HTTPS, validasi input, kata sandi administrator yang kuat, serta pembaruan sistem secara rutin.</p>
+      <p>Pengujian keamanan hanya boleh dilakukan pada website milik sendiri atau yang telah memberikan izin.</p>
+    </div>
+
+    <div class="article">
+      <h3>05. DASAR JARINGAN KOMPUTER</h3>
+      <p>Pelajari alamat IP, DNS, HTTP, HTTPS, router, dan cara perangkat berkomunikasi melalui jaringan.</p>
+      <p>Gunakan ping, curl, dan traceroute untuk latihan pemeriksaan koneksi pada jaringan yang diizinkan.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="contact">
+  <div class="panel">
+    <h2>CONTACT MR KING CYBER</h2>
+    <p>Kirim pesan langsung kepada administrator melalui WhatsApp.</p>
+
+    <div class="article">
+      <input id="contactName" type="text" placeholder="Nama kamu" style="width:100%;padding:12px;margin-bottom:10px;background:#101b16;color:#00ff88;border:1px solid #176b4b;border-radius:6px">
+      <textarea id="contactMessage" placeholder="Tulis pesan kamu..." rows="5" style="width:100%;padding:12px;background:#101b16;color:#00ff88;border:1px solid #176b4b;border-radius:6px"></textarea>
+      <button onclick="sendMKContact()" style="margin-top:10px;padding:12px 18px;background:#00ff88;color:#00150b;border:0;border-radius:5px">KIRIM VIA WHATSAPP</button>
+    </div>
+    <p class="tag">[ THANK YOU FOR VISITING ]</p>
+  </div>
+</section>
+<script>
+function sendMKContact(){
+  const name=document.getElementById('contactName').value.trim();
+  const message=document.getElementById('contactMessage').value.trim();
+  if(!name || !message){
+    alert('Isi nama dan pesan terlebih dahulu.');
+    return;
+  }
+  const text='Halo MR KING CYBER, saya '+name+'. '+message;
+  window.open('https://wa.me/6285718240626?text='+encodeURIComponent(text),'_blank');
+}
+</script>
+
+</main>
+<footer>© 2026 MR KING CYBER | DIGITAL TECHNOLOGY</footer>
+<script>
+
+function updateDashboard(){
+  const now = new Date();
+  document.getElementById('dashTime').textContent = now.toLocaleTimeString('id-ID');
+  document.getElementById('siteStatus').textContent = 'ONLINE';
+  const seconds = Math.floor((Date.now()-dashboardStart)/1000);
+  const h=String(Math.floor(seconds/3600)).padStart(2,'0');
+  const m=String(Math.floor((seconds%3600)/60)).padStart(2,'0');
+  const sec=String(seconds%60).padStart(2,'0');
+  document.getElementById('uptime').textContent = h+':'+m+':'+sec;
+}
+const dashboardStart=Date.now();
+updateDashboard();
+setInterval(updateDashboard,1000);
+document.getElementById('activityTime').textContent = new Date().toLocaleString('id-ID');
+
+function showPage(id,button){
+document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+button.classList.add('active');
+window.scrollTo(0,0);
+}
+function updateClock(){
+let d=new Date();
+document.getElementById('clock').textContent=d.toLocaleTimeString('id-ID');
+document.getElementById('date').textContent=d.toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+}
+setInterval(updateClock,1000);
+updateClock();
+let lines=['Initializing MR KING CYBER...','Loading digital dashboard...','Security system ready.','Welcome, visitor.'];
+let i=0;
+function terminal(){
+document.getElementById('terminalText').textContent='> '+lines[i];
+i=(i+1)%lines.length;
+}
+terminal();
+setInterval(terminal,2500);
+</script>
+</body>
+</html>
