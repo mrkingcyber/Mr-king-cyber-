@@ -76,6 +76,166 @@ main{padding:14px 10px}
 .hero-terminal{min-height:100px}
 }
 
+
+
+/* MR KING CYBER - FULL COMMAND CENTER REDESIGN */
+:root{
+ --neon:#00ff88;--cyan:#00e5ff;--bg:#030807;
+ --panel:#091510;--line:#174b38;--muted:#91aaa0;
+}
+body{
+ background:
+ radial-gradient(ellipse at 15% 5%,#07352266,transparent 35%),
+ radial-gradient(ellipse at 90% 35%,#003d4933,transparent 35%),
+ linear-gradient(145deg,#020605,#07100c 55%,#020504);
+ color:#e0f8ec;
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+ background-image:linear-gradient(#00ff8808 1px,transparent 1px),
+ linear-gradient(90deg,#00ff8808 1px,transparent 1px);
+ background-size:35px 35px;
+}
+header{
+ position:relative;overflow:hidden;
+ background:linear-gradient(115deg,#06130d,#0b2418 55%,#031015);
+ border-bottom:1px solid var(--neon);
+ box-shadow:0 8px 35px #00ff881c;
+}
+header:after{
+ content:"";position:absolute;width:240px;height:240px;
+ border:1px solid #00ff8822;border-radius:50%;
+ right:-90px;top:-150px;box-shadow:0 0 0 25px #00ff8808,0 0 0 50px #00ff8805;
+}
+header h1{position:relative;z-index:1;text-shadow:0 0 12px #00ff88,0 0 30px #00ff8866}
+header h1:before{content:"♛ ";color:var(--cyan)}
+header p{position:relative;z-index:1;letter-spacing:4px}
+#clock{position:relative;z-index:1}
+nav{
+ background:#030b08ed;border-bottom:1px solid #00ff8855;
+ box-shadow:0 8px 25px #0009;
+}
+nav button{
+ background:linear-gradient(145deg,#0c1b13,#06100b);
+ border:1px solid #20563e;border-radius:5px;
+ color:#a9e9c6;min-width:78px;
+}
+nav button:hover,nav button.active{
+ background:linear-gradient(120deg,#00ff88,#00dca0);
+ color:#00180d;border-color:var(--neon);
+ box-shadow:0 0 18px #00ff8866;
+}
+main{max-width:1180px;padding-top:30px;padding-bottom:45px}
+section.active{animation:cyberEnter .35s ease}
+@keyframes cyberEnter{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.panel{
+ position:relative;overflow:hidden;
+ background:linear-gradient(145deg,#0c1b13f5,#06100cf5);
+ border:1px solid #1a563b;border-radius:13px;
+ padding:25px;margin:18px 0;
+ box-shadow:0 12px 35px #0008,inset 0 1px #ffffff08;
+}
+.panel:before{
+ content:"";position:absolute;left:0;top:0;width:75px;height:2px;
+ background:linear-gradient(90deg,var(--neon),transparent);
+}
+.panel h2{
+ color:#f0fff6;border-bottom:1px solid #1d573c;
+ letter-spacing:1.5px;font-size:clamp(19px,3vw,25px);
+}
+.panel h3{letter-spacing:1px;color:var(--neon)}
+.panel p{color:#b6cfc1}
+.tag{font-size:10px;font-weight:bold;color:var(--cyan);letter-spacing:2px}
+.article{
+ position:relative;border:1px solid #174b38;border-left:3px solid var(--neon);
+ border-radius:8px;background:linear-gradient(110deg,#0c2117,#07120d);
+ padding:17px 18px;margin:14px 0;
+ box-shadow:0 5px 18px #0004;
+ transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.article:hover{
+ transform:translateY(-3px);border-color:#00ff8877;
+ box-shadow:0 8px 24px #00ff8815;
+}
+.article h3{font-size:14px;color:#d9ffeb}
+.article p{font-size:13px}
+input,textarea{
+ background:#030c08!important;border:1px solid #205a40!important;
+ color:#dffff0!important;border-radius:7px!important;
+}
+input:focus,textarea:focus{
+ border-color:var(--neon)!important;box-shadow:0 0 13px #00ff8833!important;
+}
+button{
+ transition:all .2s ease;
+}
+.panel button{
+ background:linear-gradient(110deg,#00ff88,#00d7a0);
+ color:#00170c;border:0;border-radius:6px;
+ padding:11px 17px;font-weight:bold;cursor:pointer;
+}
+.panel button:hover{box-shadow:0 0 17px #00ff8877;transform:translateY(-1px)}
+/* ABOUT */
+#about{display:none;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch}
+#about.active{display:grid}
+#about>.panel{margin:0}
+#about>.panel:first-child{background:linear-gradient(145deg,#0c2418,#07110d)}
+#about>.panel:last-child{border-color:#087b85}
+#about>.panel:last-child:before{background:linear-gradient(90deg,var(--cyan),transparent)}
+/* SECURITY */
+#security .panel{background:linear-gradient(145deg,#101b17,#080d0c);border-color:#087b85}
+#security .panel:before{background:linear-gradient(90deg,var(--cyan),transparent)}
+#security ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#security li{
+ background:#071914;border:1px solid #146052;border-radius:7px;
+ padding:13px;color:#bff9e8;font-size:13px;
+}
+#security li:before{content:"◈  ";color:var(--cyan)}
+/* TOOLS */
+#tools>.panel{border-color:#168b66}
+#tools>.panel>.article{display:inline-block;vertical-align:top;width:calc(50% - 10px);min-height:220px;margin:12px 5px}
+#tools>.panel>.article h3{color:var(--cyan)}
+#tools small{color:#91aaa0}
+/* NETWORK */
+#network>.panel{border-color:#087b85}
+#network>.panel:before{background:linear-gradient(90deg,var(--cyan),transparent)}
+#network>.panel>.article{display:inline-block;vertical-align:top;width:calc(33.333% - 12px);min-height:155px;margin:12px 5px}
+#network .article{border-left-color:var(--cyan)}
+#network .article h3{color:var(--cyan)}
+/* LEARNING */
+#learning>.panel>.article{display:inline-block;vertical-align:top;width:calc(50% - 12px);min-height:145px;margin:12px 5px}
+#learning .article:nth-of-type(even){border-left-color:var(--cyan)}
+/* KNOWLEDGE ARCHIVE */
+#articles>.panel>.article{display:inline-block;vertical-align:top;width:calc(50% - 12px);min-height:190px;margin:12px 5px}
+/* NEWS */
+#news>.panel{border-color:#087b85}
+#news>.panel:before{background:linear-gradient(90deg,var(--cyan),transparent)}
+#news>.panel>.article{display:inline-block;vertical-align:top;width:calc(50% - 12px);min-height:150px;margin:12px 5px}
+#news .article{border-left-color:var(--cyan)}
+#news .article h3{color:var(--cyan)}
+/* CONTACT */
+#contact>.panel{
+ max-width:760px;margin:18px auto;
+ background:linear-gradient(145deg,#0b2119,#061014);
+ border-color:#168b75;
+}
+#contact>.panel:before{background:linear-gradient(90deg,var(--cyan),transparent)}
+#contact .article{padding:22px;border-left-color:var(--cyan)}
+#contact button{background:linear-gradient(110deg,#00e5ff,#00ffad)}
+footer{background:#030907;border-top:1px solid #174b38}
+@media(max-width:700px){
+ #about.active{grid-template-columns:1fr}
+ #tools>.panel>.article,#network>.panel>.article,
+ #learning>.panel>.article,#articles>.panel>.article,
+ #news>.panel>.article{display:block;width:auto;margin:13px 0;min-height:0}
+ #security ul{grid-template-columns:1fr}
+ .panel{padding:19px}
+ nav button{min-width:0;flex:1 1 20%;padding:10px 5px}
+}
+
 </style>
 </head>
 <body>
