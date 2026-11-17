@@ -6,26 +6,39 @@
 <title>MR KING CYBER</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#050908;color:#00ff88;font-family:Arial,sans-serif}
-header{text-align:center;padding:25px;background:#09150f;border-bottom:1px solid #00ff88}
-header h1{font-size:28px;text-shadow:0 0 15px #00ff88}
-header p{color:#9bb9a6;font-size:12px;letter-spacing:2px}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;background:#101b16;padding:12px;position:sticky;top:0;z-index:5}
-nav button{background:#101b16;color:#00ff88;border:1px solid #176b47;padding:10px;border-radius:5px}
-nav button.active{background:#00ff88;color:#00150b}
-main{max-width:900px;margin:auto;padding:20px 15px;min-height:65vh}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#10251d 0%,#050908 55%,#020504 100%);color:#d7f8e5;font-family:Arial,sans-serif}
+header{text-align:center;padding:30px 15px;background:linear-gradient(135deg,#07140e,#10251b,#06100b);border-bottom:1px solid #00ff88;box-shadow:0 5px 25px #00ff8820}
+header h1{font-size:clamp(25px,5vw,38px);color:#00ff88;letter-spacing:3px;text-shadow:0 0 8px #00ff88,0 0 22px #00ff8866}
+header p{color:#9bb9c9;font-size:12px;letter-spacing:3px}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;background:#07110deF;padding:13px 8px;position:sticky;top:0;z-index:5;border-bottom:1px solid #176b47;backdrop-filter:blur(12px)}
+nav button{background:#0b1912;color:#00ff88;border:1px solid #176b47;padding:10px 15px;border-radius:6px;cursor:pointer;font-weight:bold;letter-spacing:1px;transition:.25s}
+nav button:hover{background:#123522;border-color:#00ff88;box-shadow:0 0 12px #00ff8855}
+nav button.active{background:#00ff88;color:#00150b;box-shadow:0 0 15px #00ff8877}
+main{max-width:1050px;margin:auto;padding:24px 15px;min-height:65vh}
 section{display:none}
-section.active{display:block}
-.panel{background:#0b1711;border:1px solid #176b47;border-radius:12px;padding:22px;margin:16px 0}
-h2{color:white}
+section.active{display:block;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel{background:linear-gradient(145deg,#0d1d14dd,#08120ddd);border:1px solid #176b47;border-radius:14px;padding:24px;margin:16px 0;box-shadow:0 8px 30px #0008,inset 0 0 20px #00ff8808}
+h2{color:#eafff2;border-bottom:1px solid #176b47;padding-bottom:12px}
 h3{color:#00ff88}
 p,li{color:#b4c9bc;line-height:1.7}
-.tag{color:#00ff88}
-#clock{font-size:27px;color:#00ff88;font-weight:bold}
-.terminal{background:#020503;border:1px solid #176b47;border-radius:8px;padding:16px;color:#00ff88;font-family:monospace;line-height:1.8;min-height:110px}
-.article{border-left:3px solid #00ff88;padding:10px 15px;margin:15px 0;background:#101b16}
-footer{text-align:center;padding:25px;color:#668879;border-top:1px solid #173b29}
+.tag{color:#00ff88;letter-spacing:2px}
+#clock{font-size:27px;color:#00ff88;font-weight:bold;text-shadow:0 0 12px #00ff88}
+#date{color:#9bb9a6;margin-top:5px}
+.terminal{background:#020503;border:1px solid #176b47;border-radius:8px;padding:16px;color:#00ff88;font-family:monospace;line-height:1.8;min-height:110px;box-shadow:inset 0 0 18px #00ff8810;overflow-wrap:anywhere}
+.article{border-left:3px solid #00ff88;padding:14px 16px;margin:15px 0;background:linear-gradient(90deg,#10251a,#0a150f);border-radius:0 8px 8px 0}
+footer{text-align:center;padding:25px;color:#668879;border-top:1px solid #173b29;background:#050b07}
 input,textarea{width:100%;padding:12px;margin:8px 0;background:#07110b;border:1px solid #176b47;color:#00ff88;border-radius:5px}
+input:focus,textarea:focus{outline:none;border-color:#00ff88;box-shadow:0 0 10px #00ff8844}
+button{font-family:inherit}
+@media(max-width:600px){
+header{padding:22px 10px}
+nav{gap:6px;padding:10px 5px}
+nav button{padding:9px 10px;font-size:11px}
+main{padding:14px 10px}
+.panel{padding:17px}
+}
 </style>
 </head>
 <body>
@@ -40,7 +53,9 @@ input,textarea{width:100%;padding:12px;margin:8px 0;background:#07110b;border:1p
 <button onclick="showPage('about',this)">ABOUT</button>
 <button onclick="showPage('security',this)">SECURITY</button>
 <button onclick="showPage('tools',this)">TOOLS</button>
-<button onclick="showPage('articles',this)">ARTICLES</button>
+<button onclick="showPage('network',this)">NETWORK</button>
+<button onclick="showPage('learning',this)">LEARNING</button>
+<button onclick="showPage('news',this)">NEWS</button>
 <button onclick="showPage('contact',this)">CONTACT</button>
 </nav>
 <main>
@@ -150,10 +165,16 @@ function checkMKUrl(){
   const v=document.getElementById('mkUrl').value.trim();
   const r=document.getElementById('mkUrlResult');
   try{
-    if(!v) throw new Error();
-    const u=new URL(/^https?:\/\//i.test(v)?v:'https://'+v);
-    if(!u.hostname.includes('.') || !/^[a-z0-9.-]+$/i.test(u.hostname) || u.hostname.includes('..')) throw new Error();
-    r.textContent='Format URL valid. Domain: '+u.hostname+' | Protokol: '+u.protocol;
+    if(!v || /\\s/.test(v)) throw new Error();
+    const u=new URL(/^https?:\\/\\//i.test(v)?v:'https://'+v);
+    const h=u.hostname;
+    if(!['http:','https:'].includes(u.protocol) ||
+       !h.includes('.') ||
+       h.length>253 ||
+       h.includes('..') ||
+       !/^(?=.{1,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,63}$/i.test(h) ||
+       u.username || u.password) throw new Error();
+    r.textContent='Format URL valid. Domain: '+h+' | Protokol: '+u.protocol;
   }catch(e){
     r.textContent='Format URL tidak valid. Periksa kembali alamat website.';
   }
@@ -161,6 +182,50 @@ function checkMKUrl(){
 </script>
 
 
+
+<section id="network">
+<div class="panel">
+<h2>NETWORK CENTER</h2>
+<p class="tag">[ NETWORK DIAGNOSTICS ]</p>
+<p>Pusat pembelajaran dan pemeriksaan jaringan komputer.</p>
+<div class="article">
+<h3>IP ADDRESS</h3>
+<p>Pelajari alamat IP dan fungsinya dalam komunikasi jaringan.</p>
+</div>
+<div class="article">
+<h3>DNS LOOKUP</h3>
+<p>Pelajari bagaimana nama domain diterjemahkan menjadi alamat IP.</p>
+</div>
+<div class="article">
+<h3>NETWORK DIAGNOSTICS</h3>
+<p>Panduan Ping, Traceroute, dan pemeriksaan konektivitas jaringan.</p>
+</div>
+</div>
+</section>
+
+<section id="learning">
+<div class="panel">
+<h2>LEARNING CENTER</h2>
+<p class="tag">[ DIGITAL KNOWLEDGE BASE ]</p>
+<p>Pusat pembelajaran teknologi untuk pemula hingga tingkat lanjutan.</p>
+<div class="article">
+<h3>01. LINUX & TERMUX</h3>
+<p>Belajar perintah Linux, navigasi terminal, dan pengelolaan file.</p>
+</div>
+<div class="article">
+<h3>02. COMPUTER NETWORKING</h3>
+<p>Memahami IP Address, DNS, HTTP, dan dasar komunikasi jaringan.</p>
+</div>
+<div class="article">
+<h3>03. CYBER SECURITY</h3>
+<p>Mempelajari keamanan akun, privasi, dan perlindungan perangkat.</p>
+</div>
+<div class="article">
+<h3>04. PROGRAMMING</h3>
+<p>Mengenal HTML, CSS, JavaScript, dan dasar pengembangan website.</p>
+</div>
+</div>
+</section>
 
 <section id="articles">
   <div class="panel">
@@ -200,6 +265,31 @@ function checkMKUrl(){
 </section>
 
 
+
+<section id="news">
+<div class="panel">
+<h2>TECHNOLOGY NEWS</h2>
+<p class="tag">[ DIGITAL INTELLIGENCE ]</p>
+<p>Pusat informasi teknologi dan perkembangan keamanan digital.</p>
+<div class="article">
+<h3>01. CYBER SECURITY UPDATE</h3>
+<p>Informasi mengenai ancaman siber, perlindungan akun, dan keamanan internet.</p>
+</div>
+<div class="article">
+<h3>02. TECHNOLOGY DEVELOPMENT</h3>
+<p>Perkembangan perangkat lunak, sistem operasi, dan teknologi digital.</p>
+</div>
+<div class="article">
+<h3>03. NETWORK & INTERNET</h3>
+<p>Informasi jaringan komputer, infrastruktur internet, dan teknologi komunikasi.</p>
+</div>
+<div class="article">
+<h3>04. DIGITAL SAFETY</h3>
+<p>Tips mengenali penipuan online, phishing, dan tautan berbahaya.</p>
+</div>
+<p>Informasi berita akan dikembangkan dan diperbarui secara bertahap.</p>
+</div>
+</section>
 
 <section id="contact">
   <div class="panel">
