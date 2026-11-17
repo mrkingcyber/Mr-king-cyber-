@@ -39,6 +39,43 @@ nav button{padding:9px 10px;font-size:11px}
 main{padding:14px 10px}
 .panel{padding:17px}
 }
+
+/* PREMIUM CYBER DASHBOARD */
+.home-hero{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;padding:30px 24px;background:linear-gradient(120deg,#0b2117,#07100d 70%);border:1px solid #00ff8866;border-radius:16px;position:relative;overflow:hidden;box-shadow:0 0 30px #00ff8815}
+.home-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(#00ff8809 1px,transparent 1px),linear-gradient(90deg,#00ff8809 1px,transparent 1px);background-size:25px 25px;pointer-events:none}
+.hero-content,.hero-terminal{position:relative;z-index:1}
+.hero-content h2{font-size:clamp(32px,6vw,54px);line-height:1.1;border:0;margin:18px 0;color:#fff;letter-spacing:2px}
+.hero-content h2 span{color:#00ff88;text-shadow:0 0 18px #00ff8877}
+.hero-description{font-size:14px;max-width:430px}
+.hero-status{display:inline-flex;align-items:center;gap:9px;margin-top:15px;padding:10px 13px;border:1px solid #176b47;border-radius:30px;color:#00ff88;font-size:10px;letter-spacing:1px}
+.online-dot{display:inline-block;width:8px;height:8px;background:#00ff88;border-radius:50%;box-shadow:0 0 12px #00ff88;flex-shrink:0}
+.hero-terminal{align-self:center;background:#020805;border:1px solid #176b47;border-radius:10px;padding:16px;min-height:130px;color:#00ff88;font:12px monospace;box-shadow:0 0 22px #00ff8815}
+.terminal-heading{color:#9bb9a6;border-bottom:1px solid #176b47;padding-bottom:10px;margin-bottom:12px;font-size:11px;letter-spacing:1px}
+.terminal-heading span{color:#00ff88}
+.dashboard-heading{margin:30px 0 15px}
+.dashboard-heading h2{font-size:20px;margin-bottom:5px}
+.dashboard-heading p{font-size:10px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat-card{background:linear-gradient(145deg,#10251a,#07110b);border:1px solid #176b47;border-radius:10px;padding:17px 14px;min-width:0;box-shadow:inset 0 0 18px #00ff8808}
+.stat-label{display:block;color:#8eac9b;font-size:9px;letter-spacing:1px;min-height:25px}
+.stat-card strong{display:block;color:#00ff88;font-size:25px;margin:8px 0;text-shadow:0 0 10px #00ff8844;overflow-wrap:anywhere}
+.stat-card .stat-online{font-size:18px}
+.stat-detail{font-size:10px;color:#789989}
+.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:18px}
+.dashboard-grid .panel{margin:0}
+.monitor-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #176b4733;font-size:10px}
+.monitor-row span{color:#789989;letter-spacing:1px}
+.monitor-row strong{color:#d7f8e5;text-align:right;font-size:10px}
+.activity-box{background:#06110a;border:1px solid #176b47;border-radius:8px;padding:15px;margin-top:15px}
+.activity-box p{display:inline-block;margin:0 0 0 8px;color:#00ff88}
+.activity-box small{display:block;color:#789989;margin:12px 0 0 18px}
+@media(max-width:700px){
+.home-hero{grid-template-columns:1fr;padding:22px 17px}
+.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dashboard-grid{grid-template-columns:1fr}
+.hero-terminal{min-height:100px}
+}
+
 </style>
 </head>
 <body>
@@ -61,39 +98,67 @@ main{padding:14px 10px}
 <main>
 
 <section id="home" class="active">
-<div class="panel">
-<p class="tag">[ SYSTEM ONLINE ]</p>
-<h2>WELCOME TO MR KING CYBER</h2>
-<p>Explore the world of technology and digital security.</p>
-<div class="terminal">
-<div id="terminalText"></div>
-</div>
+<div class="home-hero">
+    <div class="hero-content">
+        <p class="tag">[ SYSTEM ONLINE ] — DIGITAL SECURITY PLATFORM</p>
+        <h2>MR KING <span>CYBER</span></h2>
+        <p class="hero-description">Explore Technology. Understand Security. Build Digital Skills.</p>
+        <div class="hero-status"><span class="online-dot"></span> ALL SYSTEMS OPERATIONAL</div>
+    </div>
+    <div class="hero-terminal">
+        <div class="terminal-heading"><span>●</span> SYSTEM TERMINAL</div>
+        <div id="terminalText"></div>
+    </div>
 </div>
 
-<div class="panel">
-<h3>LIVE DASHBOARD V8</h3>
-<div class="article">
-<p>Website status: <span class="tag" id="siteStatus">CHECKING...</span></p>
-<p>Platform: MR KING CYBER</p>
-<p>Mode: Digital Technology</p>
-<p>Local time: <span id="dashTime">--:--:--</span></p>
-<p>Session duration: <span id="uptime">00:00:00</span></p>
+<div class="dashboard-heading">
+    <h2>COMMAND CENTER</h2>
+    <p class="tag">[ LIVE SYSTEM MONITORING ]</p>
 </div>
-<div class="article">
-<h3>WEBSITE STATISTICS</h3>
-<p>Navigation menus: <span class="tag">6</span></p>
-<p>Learning articles: <span class="tag">5</span></p>
-<p>Interactive tools: <span class="tag">2</span></p>
-<p>Contact channel: <span class="tag">WHATSAPP</span></p>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <span class="stat-label">NAVIGATION MENUS</span>
+        <strong>08</strong>
+        <span class="stat-detail">Platform sections</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">LEARNING MODULES</span>
+        <strong>04</strong>
+        <span class="stat-detail">Knowledge topics</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">INTERACTIVE TOOLS</span>
+        <strong>02</strong>
+        <span class="stat-detail">Digital utilities</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">PLATFORM STATUS</span>
+        <strong class="stat-online">ONLINE</strong>
+        <span class="stat-detail" id="siteStatus">CHECKING...</span>
+    </div>
 </div>
-<div class="article">
-<h3>SYSTEM ACTIVITY</h3>
-<p id="activityStatus">Dashboard initialized.</p>
-<p id="activityTime">Waiting for activity...</p>
-</div>
+
+<div class="dashboard-grid">
+    <div class="panel">
+        <p class="tag">[ SYSTEM INFORMATION ]</p>
+        <h3>LIVE MONITOR</h3>
+        <div class="monitor-row"><span>PLATFORM</span><strong>MR KING CYBER</strong></div>
+        <div class="monitor-row"><span>LOCAL TIME</span><strong id="dashTime">--:--:--</strong></div>
+        <div class="monitor-row"><span>SESSION DURATION</span><strong id="uptime">00:00:00</strong></div>
+        <div class="monitor-row"><span>MODE</span><strong>DIGITAL TECHNOLOGY</strong></div>
+    </div>
+    <div class="panel">
+        <p class="tag">[ SYSTEM ACTIVITY ]</p>
+        <h3>ACTIVITY LOG</h3>
+        <div class="activity-box">
+            <span class="online-dot"></span>
+            <p id="activityStatus">Dashboard initialized.</p>
+            <small id="activityTime">Waiting for activity...</small>
+        </div>
+    </div>
 </div>
 </section>
-
 
 <section id="about">
 <div class="panel">
@@ -334,7 +399,8 @@ function updateDashboard(){
 const dashboardStart=Date.now();
 updateDashboard();
 setInterval(updateDashboard,1000);
-document.getElementById('activityTime').textContent = new Date().toLocaleString('id-ID');
+document.getElementById('activityStatus').textContent = 'All systems operational.';
+document.getElementById('activityTime').textContent = 'Last system check: ' + new Date().toLocaleString('id-ID');
 
 function showPage(id,button){
 document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
