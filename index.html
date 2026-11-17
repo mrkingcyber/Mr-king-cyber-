@@ -150,11 +150,12 @@ function checkMKUrl(){
   const v=document.getElementById('mkUrl').value.trim();
   const r=document.getElementById('mkUrlResult');
   try{
-    const u=new URL(v);
-    if(u.protocol!=='http:'&&u.protocol!=='https:')throw new Error();
-    r.textContent='Format URL valid. Domain: '+u.hostname;
+    if(!v) throw new Error();
+    const u=new URL(/^https?:\/\//i.test(v)?v:'https://'+v);
+    if(!u.hostname.includes('.') || !/^[a-z0-9.-]+$/i.test(u.hostname) || u.hostname.includes('..')) throw new Error();
+    r.textContent='Format URL valid. Domain: '+u.hostname+' | Protokol: '+u.protocol;
   }catch(e){
-    r.textContent='Format URL tidak valid. Gunakan alamat yang diawali http:// atau https://';
+    r.textContent='Format URL tidak valid. Periksa kembali alamat website.';
   }
 }
 </script>
